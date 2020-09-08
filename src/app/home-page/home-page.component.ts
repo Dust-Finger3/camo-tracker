@@ -52,12 +52,12 @@ export class HomePageComponent implements OnInit {
       let userProgress = 0;
 
       // Fake it for now, later on we need to get it from data storage
-      if (i % 2 === 0) {
-        userProgress = fakeUserProgress1;
-      } else if (i % 2 === 1) {
+      if (i % 3 === 0) {
+        userProgress = fakeUserProgress3;
+      } else if (i % 2 === 0) {
         userProgress = fakeUserProgress2;
       } else {
-        userProgress = fakeUserProgress3;
+        userProgress = fakeUserProgress1;
       }
 
       progressPercentage = (userProgress / weaponCamoLength) * 100;
