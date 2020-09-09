@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  font-size: 14px;
+}
+
+.camo-entry {
+  background: #343434;
+  padding: 0 10px 0 15px;
+  border-radius: 6px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .camo-entry-container {
+    display: flex;
+    align-items: center;
+    .camo-info {
+      flex: 1;
+      padding: 15px 0;
+    }
+
+    .camo-progress {
+      width: 80px;
+      margin-left: 15px;
+    }
+    .btn {
+      padding: 3px 0 0 0;
+      text-align: center;
+      background: #434343;
+      &.btn-top {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+
+      &.btn-bottom {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+      .material-icons {
+        font-size: 20px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .num {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

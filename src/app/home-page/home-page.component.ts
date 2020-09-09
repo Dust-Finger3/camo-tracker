@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Weapon } from 'data/data-definitions';
-import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER, MELEE, LAUNCHER } from 'data/weapons-camo';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CamoData, Weapon } from 'data/data-definitions';
+import { ASSAULT, LAUNCHER, LMG, MARKSMAN, MELEE, PISTOL, SHOTGUN, SMG, SNIPER } from 'data/weapons-camo';
+import { fromEvent, Subscription } from 'rxjs';
 
-interface Progress {
+import { DataService } from '../data.service';
+
+interface OverallProgress {
   current: number;
   total: number;
   bar: string;
 }
 
-interface ProgressData {
-  [weaponId: string]: Progress;
+interface OverallProgressData {
+  [weaponId: string]: OverallProgress;
+}
+
+interface ProgressDataPerCamo {
+  [weaponId: string]: CamoData;
 }
 
 @Component({
@@ -17,15 +24,21 @@ interface ProgressData {
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   weapons: Weapon[];
 
   // This is used to wire user's progress to the html (the view)
-  progressData: ProgressData = {};
+  overallProgressData: OverallProgressData = {};
 
-  constructor() {
+  isExpanded: { [weaponId: string]: boolean } = {};
+
+  progressDataPerCamo: ProgressDataPerCamo = {};
+
+  $localStorageSubscription: Subscription;
+
+  constructor(private dataService: DataService) {
     // Combine all the weapons in weapons-camo file.
-    const weapons = [].concat(
+    this.weapons = [].concat(
       ASSAULT,
       SNIPER,
       LMG,
@@ -37,43 +50,69 @@ export class HomePageComponent implements OnInit {
       LAUNCHER
     );
 
-    // For demo
-    const fakeUserProgress1 = 1;
-    const fakeUserProgress2 = 2;
-    const fakeUserProgress3 = 3;
+    this.setup();
 
-    const progressData = this.progressData;
+    this.$localStorageSubscription = fromEvent(window, 'storage').subscribe(
+      (e: StorageEvent) => {
+        // Every time there's a change in another tab, run the setup
+        this.setup();
+      }
+    );
+  }
+
+  private setup() {
+    const weapons = this.weapons;
+    this.progressDataPerCamo = this.dataService.getUserData();
+
     for (let i = 0, len = weapons.length; i < len; i++) {
       const weapon = weapons[i];
-
-      // Uncomment this line to see what it actually does on chrome dev tool
-      // console.log(weapon);
-
-      const weaponCamoLength = Object.keys(weapon.camo).length;
-      let progressPercentage = 0;
-      let userProgress = 0;
-
-      // Fake it for now, later on we need to get it from data storage
-      if (i % 3 === 0) {
-        userProgress = fakeUserProgress3;
-      } else if (i % 2 === 0) {
-        userProgress = fakeUserProgress2;
-      } else {
-        userProgress = fakeUserProgress1;
-      }
-
-      progressPercentage = (userProgress / weaponCamoLength) * 100;
-      progressData[weapon.id] = {
-        current: userProgress,
-        total: weaponCamoLength,
-        bar: progressPercentage + '%',
-      };
+      this.calculateProgressPercentage(weapon);
     }
-
-    // Uncomment this line to see what it actually does on chrome dev tool
-    // console.log(progressData);
-    this.weapons = weapons;
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    if (this.$localStorageSubscription) {
+      this.$localStorageSubscription.unsubscribe();
+    }
+  }
+
+  progressChange(weapon: Weapon) {
+    this.calculateProgressPercentage(weapon);
+    this.dataService.save();
+  }
+
+  private calculateProgressPercentage(weapon) {
+    let userOverallProgress = 0;
+
+    const keys = Object.keys(weapon.camo);
+    const weaponCamoLength = keys.length;
+
+    const userProgressData = this.progressDataPerCamo[weapon.id];
+    if (userProgressData) {
+      for (const key of keys) {
+        if (userProgressData[key] === weapon.camo[key]) {
+          userOverallProgress++;
+        }
+      }
+    } else {
+      // If no user progress data, copy from weapon camo
+      const camoData = Object.assign({}, weapon.camo);
+
+      // Set every entry to 0
+      for (const key of keys) {
+        camoData[key] = 0;
+      }
+
+      this.progressDataPerCamo[weapon.id] = camoData;
+    }
+
+    const progressPercentage = (userOverallProgress / weaponCamoLength) * 100;
+    this.overallProgressData[weapon.id] = {
+      current: userOverallProgress,
+      total: weaponCamoLength,
+      bar: progressPercentage + '%',
+    };
+  }
 }

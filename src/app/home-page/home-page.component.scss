@@ -4,8 +4,36 @@
 
 .card {
   background: #232323;
-  border-radius: 3px;
-  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .card-title {
+    padding: 15px;
+  }
+
+  .progress-number {
+    float: right;
+    padding: 15px;
+  }
+
+  .camo-entries {
+    padding: 0 15px 15px 15px;
+  }
+
+  app-camo-entry {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .progress-bar {
@@ -19,6 +47,14 @@
   }
 }
 
-.progress-number {
-  float: right;
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-left: 1%;
+    padding-right: 0;
+  }
+  .card-container {
+    float: left;
+    width: 32.33%;
+    margin-right: 1%;
+  }
 }

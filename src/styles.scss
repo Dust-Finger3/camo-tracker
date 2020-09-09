@@ -10,3 +10,45 @@ body {
 .container {
   padding: 15px;
 }
+
+.hidden {
+  display: none;
+}
+
+.mat-slider-horizontal {
+  width: 100%;
+  padding: 0;
+  height: 28px !important;
+}
+
+.mat-slider-thumb {
+  background-color: #fff !important;
+}
+
+.mat-slider-horizontal .mat-slider-wrapper {
+  // top: 15px !important;
+  left: 4px !important;
+  right: 4px !important;
+}
+
+*:focus {
+  outline: none;
+}
+
+.is-gold {
+  color: #ffd740;
+}
+
+.mat-accent .mat-slider-track-fill,
+.mat-accent .mat-slider-thumb,
+.mat-accent .mat-slider-thumb-label {
+  background: #fff;
+}
+
+.is-gold {
+  .mat-accent .mat-slider-track-fill,
+  .mat-accent .mat-slider-thumb,
+  .mat-accent .mat-slider-thumb-label {
+    background: #ffd740;
+  }
+}
