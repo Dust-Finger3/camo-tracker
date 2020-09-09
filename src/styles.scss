@@ -17,18 +17,20 @@ body {
 
 .mat-slider-horizontal {
   width: 100%;
-  padding: 0;
-  height: 28px !important;
+  height: 18px !important;
 }
 
 .mat-slider-thumb {
   background-color: #fff !important;
+  width: 12px !important;
+  height: 12px !important;
+  bottom: -6px !important;
 }
 
 .mat-slider-horizontal .mat-slider-wrapper {
-  // top: 15px !important;
-  left: 4px !important;
-  right: 4px !important;
+  top: 8px !important;
+  left: 12px !important;
+  right: 12px !important;
 }
 
 *:focus {
