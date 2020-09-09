@@ -606,11 +606,11 @@ export const LAUNCHER: Weapon[] = [
     type: WeaponType.LAUNCHER,
     camo: {
       streaks: 50,
-      UAV: 30,
-      tShield: 10,
+      uav: 30,
+      transformShield: 10,
       sentry: 8,
       goliath: 10,
-      VTol: 10,
+      vtol: 10,
     },
   },
   {
@@ -619,7 +619,7 @@ export const LAUNCHER: Weapon[] = [
     type: WeaponType.LAUNCHER,
     camo: {
       kill: 50,
-      UAV: 30,
+      uav: 30,
       crouch: 30,
       sentry: 10,
       coldBlooded: 100,

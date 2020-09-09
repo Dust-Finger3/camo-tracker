@@ -24,14 +24,14 @@ export interface CamoData {
   plain?: number; // No attachments
 
   //launchers only
-  UAV?: number; // destroy UAVs
+  uav?: number; // destroy UAVs
   double?: number; // double kills
   coldBlooded?: number; // kills with cold-blooded perk
   sentry?: number; // destroy sentry gun
   streaks?: number; // destroy scorestreaks
-  VTol?: number; //destroy VTols
+  vtol?: number; //destroy VTols
   goliath?: number; // destroy goliath
-  tShield?: number; // destroy transform shield
+  transformShield?: number; // destroy transform shield
 
   // Knife only
   behind?: number; // Kills from behind
