@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Weapon } from 'data/data-definitions';
-import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER } from 'data/weapons-camo';
+import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER, MELEE, LAUNCHER } from 'data/weapons-camo';
 
 interface Progress {
   current: number;
@@ -32,7 +32,9 @@ export class HomePageComponent implements OnInit {
       SMG,
       SHOTGUN,
       PISTOL,
-      MARKSMAN
+      MARKSMAN,
+      MELEE,
+      LAUNCHER
     );
 
     // For demo
