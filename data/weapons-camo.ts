@@ -607,7 +607,11 @@ export const LAUNCHER: Weapon[] = [
     camo: {
       streaks: 50,
       uav: 30,
+<<<<<<< HEAD
       transformShield: 10,
+=======
+      tShield: 10,
+>>>>>>> 4c454747dcff423aa6d62dd4d2dd772d8f63b1f7
       sentry: 8,
       goliath: 10,
       vtol: 10,
