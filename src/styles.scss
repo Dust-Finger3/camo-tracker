@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "styles/reset";
+
 body {
-  background: #000;
+  background: #131313;
   color: #fff;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
+}
+
+.container {
+  padding: 15px;
 }

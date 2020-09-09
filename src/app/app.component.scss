@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: #000;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 0 15px;
+}
+
+.main-container {
+  padding-top: 60px;
+}
