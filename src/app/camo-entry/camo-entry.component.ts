@@ -13,6 +13,8 @@ export class CamoEntryComponent implements OnInit {
 
   @Output() change = new EventEmitter<number>();
 
+  debounceTimeout: number;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -34,7 +36,13 @@ export class CamoEntryComponent implements OnInit {
   }
 
   sliderChange(data: MatSliderChange) {
-    this.userProgress = data.value;
-    this.change.emit(this.userProgress);
+    // Adding debounce to remove jankiness
+    clearTimeout(this.debounceTimeout);
+    this.debounceTimeout = setTimeout(() => {
+      requestAnimationFrame(() => {
+        this.userProgress = data.value;
+        this.change.emit(this.userProgress);
+      });
+    });
   }
 }
