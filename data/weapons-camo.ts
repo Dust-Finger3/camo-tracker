@@ -605,7 +605,12 @@ export const LAUNCHER: Weapon[] = [
     name: 'FHJ-18',
     type: WeaponType.LAUNCHER,
     camo: {
-      kill: 50,
+      streaks: 50,
+      UAV: 30,
+      tShield: 10,
+      sentry: 8,
+      goliath: 10,
+      VTol: 10,
     },
   },
   {
@@ -614,6 +619,11 @@ export const LAUNCHER: Weapon[] = [
     type: WeaponType.LAUNCHER,
     camo: {
       kill: 50,
+      UAV: 30,
+      crouch: 30,
+      sentry: 10,
+      coldBlooded: 100,
+      double: 18,
     },
   },
 ];

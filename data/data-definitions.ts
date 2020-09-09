@@ -15,13 +15,23 @@ export enum WeaponType {
 }
 
 export interface CamoData {
-  kill: number;
+  kill?: number;
   crouch?: number; // Kills while crouching
   hip?: number; // Kills with hipfire
   long?: number; // Long shots
   head?: number; // Headshots
   full?: number; // Full attachments
   plain?: number; // No attachments
+
+  //launchers only
+  UAV?: number; // destroy UAVs
+  double?: number; // double kills
+  coldBlooded?: number; // kills with cold-blooded perk
+  sentry?: number; // destroy sentry gun
+  streaks?: number; // destroy scorestreaks
+  VTol?: number; //destroy VTols
+  goliath?: number; // destroy goliath
+  tShield?: number; // destroy transform shield
 
   // Knife only
   behind?: number; // Kills from behind
