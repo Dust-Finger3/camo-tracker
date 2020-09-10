@@ -514,6 +514,19 @@ export const SHOTGUN: Weapon[] = [
     },
   },
   {
+    id: 'echo',
+    name: 'Echo',
+    type: WeaponType.SHOTGUN,
+    camo: {
+      kill: 300,
+      hip: 50,
+      long: 30,
+      full: 200,
+      head: 40,
+      plain: 80,
+    },
+  },
+  {
     id: 'hs0405',
     name: 'HS0405',
     type: WeaponType.SHOTGUN,

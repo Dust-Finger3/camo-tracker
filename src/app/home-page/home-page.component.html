@@ -22,7 +22,7 @@
       </div>
       <div class="camo-entries" *ngIf="isExpanded[weapon.id]">
         <app-camo-entry
-          title="Get kills"
+          [title]="'Kill ' + weapon.camo.kill + ' enemies'"
           *ngIf="weapon.camo.kill"
           [camoData]="weapon.camo.kill"
           [userProgress]="progressDataPerCamo[weapon.id].kill"
@@ -31,7 +31,7 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get crouch kills"
+          [title]="'Kill ' + weapon.camo.crouch + ' enemies while crouching'"
           *ngIf="weapon.camo.crouch"
           [camoData]="weapon.camo.crouch"
           [userProgress]="progressDataPerCamo[weapon.id].crouch"
@@ -41,7 +41,7 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get hip-fire kills"
+          [title]="'Kill ' + weapon.camo.hip + ' enemies with hip fire'"
           *ngIf="weapon.camo.hip"
           [camoData]="weapon.camo.hip"
           [userProgress]="progressDataPerCamo[weapon.id].hip"
@@ -50,7 +50,7 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get long shot kills"
+          [title]="'Kill ' + weapon.camo.long + ' enemies at long distance'"
           *ngIf="weapon.camo.long"
           [camoData]="weapon.camo.long"
           [userProgress]="progressDataPerCamo[weapon.id].long"
@@ -59,7 +59,9 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get kills with full attachments"
+          [title]="
+            'Kill ' + weapon.camo.full + ' enemies with full attachments'
+          "
           *ngIf="weapon.camo.full"
           [camoData]="weapon.camo.full"
           [userProgress]="progressDataPerCamo[weapon.id].full"
@@ -68,7 +70,7 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get headshots"
+          [title]="'Kill ' + weapon.camo.head + ' enemies with headshots'"
           *ngIf="weapon.camo.head"
           [camoData]="weapon.camo.head"
           [userProgress]="progressDataPerCamo[weapon.id].head"
@@ -77,7 +79,7 @@
           "
         ></app-camo-entry>
         <app-camo-entry
-          title="Get kills with no attachments"
+          [title]="'Kill ' + weapon.camo.plain + ' enemies with no attachments'"
           *ngIf="weapon.camo.plain"
           [camoData]="weapon.camo.plain"
           [userProgress]="progressDataPerCamo[weapon.id].plain"
