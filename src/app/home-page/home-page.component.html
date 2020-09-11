@@ -1,14 +1,206 @@
 <div class="container">
-  <div class="card-container" *ngFor="let weapon of weapons">
+  <div
+    class="card-container mat-elevation-z4"
+    *ngFor="let weapon of weapons"
+    [class.is-gold]="
+      overallProgressData[weapon.id].current ===
+      overallProgressData[weapon.id].total
+    "
+  >
     <div class="card">
       <div class="progress-number">
-        {{ progressData[weapon.id].current }} /
-        {{ progressData[weapon.id].total }}
+        {{ overallProgressData[weapon.id].current }} /
+        {{ overallProgressData[weapon.id].total }}
       </div>
-      <div class="title">{{ weapon.name }}</div>
+      <div
+        class="card-title"
+        matRipple
+        [matRippleDisabled]="isExpanded[weapon.id]"
+        (click)="isExpanded[weapon.id] = !isExpanded[weapon.id]"
+      >
+        {{ weapon.name }}
+      </div>
+      <div class="camo-entries" *ngIf="isExpanded[weapon.id]">
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.kill + ' enemies'"
+          *ngIf="weapon.camo.kill"
+          [camoData]="weapon.camo.kill"
+          [userProgress]="progressDataPerCamo[weapon.id].kill"
+          (change)="
+            progressDataPerCamo[weapon.id].kill = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.crouch + ' enemies while crouching'"
+          *ngIf="weapon.camo.crouch"
+          [camoData]="weapon.camo.crouch"
+          [userProgress]="progressDataPerCamo[weapon.id].crouch"
+          (change)="
+            progressDataPerCamo[weapon.id].crouch = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.hip + ' enemies with hip fire'"
+          *ngIf="weapon.camo.hip"
+          [camoData]="weapon.camo.hip"
+          [userProgress]="progressDataPerCamo[weapon.id].hip"
+          (change)="
+            progressDataPerCamo[weapon.id].hip = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.long + ' enemies at long distance'"
+          *ngIf="weapon.camo.long"
+          [camoData]="weapon.camo.long"
+          [userProgress]="progressDataPerCamo[weapon.id].long"
+          (change)="
+            progressDataPerCamo[weapon.id].long = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="
+            'Kill ' + weapon.camo.full + ' enemies with full attachments'
+          "
+          *ngIf="weapon.camo.full"
+          [camoData]="weapon.camo.full"
+          [userProgress]="progressDataPerCamo[weapon.id].full"
+          (change)="
+            progressDataPerCamo[weapon.id].full = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.head + ' enemies with headshots'"
+          *ngIf="weapon.camo.head"
+          [camoData]="weapon.camo.head"
+          [userProgress]="progressDataPerCamo[weapon.id].head"
+          (change)="
+            progressDataPerCamo[weapon.id].head = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          [title]="'Kill ' + weapon.camo.plain + ' enemies with no attachments'"
+          *ngIf="weapon.camo.plain"
+          [camoData]="weapon.camo.plain"
+          [userProgress]="progressDataPerCamo[weapon.id].plain"
+          (change)="
+            progressDataPerCamo[weapon.id].plain = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Shoot down UAVs"
+          *ngIf="weapon.camo.uav"
+          [camoData]="weapon.camo.uav"
+          [userProgress]="progressDataPerCamo[weapon.id].uav"
+          (change)="
+            progressDataPerCamo[weapon.id].uav = $event; progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Get double kills"
+          *ngIf="weapon.camo.double"
+          [camoData]="weapon.camo.double"
+          [userProgress]="progressDataPerCamo[weapon.id].double"
+          (change)="
+            progressDataPerCamo[weapon.id].double = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Kill with cold blooded equipped"
+          *ngIf="weapon.camo.coldBlooded"
+          [camoData]="weapon.camo.coldBlooded"
+          [userProgress]="progressDataPerCamo[weapon.id].coldBlooded"
+          (change)="
+            progressDataPerCamo[weapon.id].coldBlooded = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Destroy sentry guns"
+          *ngIf="weapon.camo.sentry"
+          [camoData]="weapon.camo.sentry"
+          [userProgress]="progressDataPerCamo[weapon.id].sentry"
+          (change)="
+            progressDataPerCamo[weapon.id].sentry = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Destroy scorestreaks"
+          *ngIf="weapon.camo.streaks"
+          [camoData]="weapon.camo.streaks"
+          [userProgress]="progressDataPerCamo[weapon.id].streaks"
+          (change)="
+            progressDataPerCamo[weapon.id].streaks = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Destroy enemy's XS-1 Goliath"
+          *ngIf="weapon.camo.goliath"
+          [camoData]="weapon.camo.goliath"
+          [userProgress]="progressDataPerCamo[weapon.id].goliath"
+          (change)="
+            progressDataPerCamo[weapon.id].goliath = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Destroy enemy's transform shield"
+          *ngIf="weapon.camo.transformShield"
+          [camoData]="weapon.camo.transformShield"
+          [userProgress]="progressDataPerCamo[weapon.id].transformShield"
+          (change)="
+            progressDataPerCamo[weapon.id].transformShield = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Get knife kills from behind"
+          *ngIf="weapon.camo.behind"
+          [camoData]="weapon.camo.behind"
+          [userProgress]="progressDataPerCamo[weapon.id].behind"
+          (change)="
+            progressDataPerCamo[weapon.id].behind = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Get 2 knife kills without dying"
+          *ngIf="weapon.camo.noDeath2"
+          [camoData]="weapon.camo.noDeath2"
+          [userProgress]="progressDataPerCamo[weapon.id].noDeath2"
+          (change)="
+            progressDataPerCamo[weapon.id].noDeath2 = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Get knife kills with dead silence equipped"
+          *ngIf="weapon.camo.deadSilence"
+          [camoData]="weapon.camo.deadSilence"
+          [userProgress]="progressDataPerCamo[weapon.id].deadSilence"
+          (change)="
+            progressDataPerCamo[weapon.id].deadSilence = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+        <app-camo-entry
+          title="Get 3 knife kills without dying"
+          *ngIf="weapon.camo.noDeath3"
+          [camoData]="weapon.camo.noDeath3"
+          [userProgress]="progressDataPerCamo[weapon.id].noDeath3"
+          (change)="
+            progressDataPerCamo[weapon.id].noDeath3 = $event;
+            progressChange(weapon)
+          "
+        ></app-camo-entry>
+      </div>
     </div>
-    <div class="progress-bar">
-      <div class="bar" [style.width]="progressData[weapon.id].bar"></div>
+    <div class="progress-bar" *ngIf="!isExpanded[weapon.id]">
+      <div class="bar" [style.width]="overallProgressData[weapon.id].bar"></div>
     </div>
   </div>
 </div>
