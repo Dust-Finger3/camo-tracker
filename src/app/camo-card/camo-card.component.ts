@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Progress } from '../home-page/Progress';
+import { Weapon } from 'data/data-definitions'
 
 @Component({
   selector: 'app-camo-card',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./camo-card.component.scss']
 })
 export class CamoCardComponent implements OnInit {
+  @Input() weapon: Weapon;
+  @Input() progres: Progress;
 
   constructor() { }
 
