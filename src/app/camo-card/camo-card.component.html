@@ -1,0 +1,10 @@
+<div class="card">
+    <div class="progress-number">
+      {{ progressData[weapon.id].current }} /
+      {{ progressData[weapon.id].total }}
+    </div>
+    <div class="title">{{ weapon.name }}</div>
+  </div>
+  <div class="progress-bar">
+    <div class="bar" [style.width]="progressData[weapon.id].bar"></div>
+  </div>
