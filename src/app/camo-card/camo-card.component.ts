@@ -1,19 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Progress } from '../home-page/Progress';
-import { Weapon } from 'data/data-definitions'
+import { Progress, Weapon } from 'data/data-definitions';
 
 @Component({
   selector: 'app-camo-card',
   templateUrl: './camo-card.component.html',
-  styleUrls: ['./camo-card.component.scss']
+  styleUrls: ['./camo-card.component.scss'],
 })
 export class CamoCardComponent implements OnInit {
   @Input() weapon: Weapon;
-  @Input() progres: Progress;
+  @Input() progress: Progress;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

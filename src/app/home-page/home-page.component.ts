@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Weapon } from 'data/data-definitions';
-import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER, MELEE, LAUNCHER } from 'data/weapons-camo';
-import { Progress } from './Progress';
+import { Progress, Weapon } from 'data/data-definitions';
+import { ASSAULT, LAUNCHER, LMG, MARKSMAN, MELEE, PISTOL, SHOTGUN, SMG, SNIPER } from 'data/weapons-camo';
 
 interface ProgressData {
   [weaponId: string]: Progress;
