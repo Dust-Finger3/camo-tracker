@@ -1,14 +1,8 @@
 <div class="container">
   <div class="card-container" *ngFor="let weapon of weapons">
-    <div class="card">
-      <div class="progress-number">
-        {{ progressData[weapon.id].current }} /
-        {{ progressData[weapon.id].total }}
-      </div>
-      <div class="title">{{ weapon.name }}</div>
-    </div>
-    <div class="progress-bar">
-      <div class="bar" [style.width]="progressData[weapon.id].bar"></div>
-    </div>
+    <app-camo-card
+      [weapon]="weapon"
+      [progress]="progressData[weapon.id]"
+    ></app-camo-card>
   </div>
 </div>
