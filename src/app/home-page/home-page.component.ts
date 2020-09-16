@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Weapon } from 'data/data-definitions';
 import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER, MELEE, LAUNCHER } from 'data/weapons-camo';
-import { Progress } from './Progress';
-
-interface ProgressData {
-  [weaponId: string]: Progress;
-}
+import { ProgressData } from './ProgressData';
 
 @Component({
   selector: 'app-home-page',
