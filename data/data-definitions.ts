@@ -46,3 +46,9 @@ export interface Weapon {
   type: WeaponType;
   camo: CamoData;
 }
+
+export interface Progress {
+  current: number;
+  total: number;
+  bar: string;
+}
