@@ -1,0 +1,15 @@
+
+.progress-bar {
+  width: 100%;
+  background: #434343;
+  height: 2px;
+
+  .bar {
+    background: #fff;
+    height: 100%;
+  }
+}
+
+.progress-number {
+  float: right;
+}

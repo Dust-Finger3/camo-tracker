@@ -2,8 +2,9 @@
   <div class="card-container" *ngFor="let Weapon of weapons">
     <app-camo-card
       [weapon]="Weapon"
-      [progress]="progressData[Weapon.id]"
     ></app-camo-card>
+    <app-progress-bar
+    [progress]="progressData[Weapon.id]"></app-progress-bar>
     <div class="progress-bar">
       <div class="bar" [style.width]="progressData.bar"></div>
     </div>

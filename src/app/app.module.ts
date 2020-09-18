@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CamoCardComponent } from './camo-card/camo-card.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, CamoCardComponent],
+  declarations: [AppComponent, HomePageComponent, CamoCardComponent, ProgressBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
