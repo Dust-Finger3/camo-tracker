@@ -50,5 +50,8 @@ export interface Weapon {
 export interface Progress {
   current: number;
   total: number;
-  bar: string;
+}
+
+export class ProgressDataIndex {
+  [weaponId: string]: Progress;
 }
