@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Weapon } from 'data/data-definitions'
-import { ProgressData } from '../home-page/ProgressData';
+import { Progress, Weapon } from 'data/data-definitions';
 
 @Component({
   selector: 'app-camo-card',
@@ -9,7 +8,7 @@ import { ProgressData } from '../home-page/ProgressData';
 })
 export class CamoCardComponent implements OnInit {
   @Input() weapon: Weapon;
-  @Input() progress: ProgressData;
+  @Input() progress: Progress;
 
   constructor() {}
 

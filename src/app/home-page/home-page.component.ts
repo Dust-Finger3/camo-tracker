@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Weapon } from 'data/data-definitions';
-import { ASSAULT, LMG, MARKSMAN, PISTOL, SHOTGUN, SMG, SNIPER, MELEE, LAUNCHER } from 'data/weapons-camo';
-import { ProgressData } from './ProgressData';
+import { ProgressDataIndex, Weapon } from 'data/data-definitions';
+import { ASSAULT, LAUNCHER, LMG, MARKSMAN, MELEE, PISTOL, SHOTGUN, SMG, SNIPER } from 'data/weapons-camo';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +11,7 @@ export class HomePageComponent implements OnInit {
   weapons: Weapon[];
 
   // This is used to wire user's progress to the html (the view)
-  progressData: ProgressData = {};
+  progressData: ProgressDataIndex = {};
 
   constructor() {
     // Combine all the weapons in weapons-camo file.
@@ -41,7 +40,6 @@ export class HomePageComponent implements OnInit {
       // console.log(weapon);
 
       const weaponCamoLength = Object.keys(weapon.camo).length;
-      let progressPercentage = 0;
       let userProgress = 0;
 
       // Fake it for now, later on we need to get it from data storage
@@ -53,11 +51,9 @@ export class HomePageComponent implements OnInit {
         userProgress = fakeUserProgress1;
       }
 
-      progressPercentage = (userProgress / weaponCamoLength) * 100;
       progressData[weapon.id] = {
         current: userProgress,
         total: weaponCamoLength,
-        bar: progressPercentage + '%',
       };
     }
 
